@@ -58,7 +58,7 @@ df = pd.DataFrame(top20, columns=["words", "Count"])
 
 print(df)
 
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 df.plot.bar(x="words", y="Count", legend=False)
 

@@ -7,18 +7,15 @@ import imageio
 import matplotlib.pyplot as plt
 
 
-
-#1 Using this information, create a bar chart of the top 10 topics based on their corresponding tweet volume.
+# 1 Using this information, create a bar chart of the top 10 topics based on their corresponding tweet volume.
 
 mylist = []
 
 from nyc_trends import nyc_trends
 
 
-
 for i in nyc_trends:
-    
-
+    hasattr
 
 
 from operator import itemgetter
@@ -44,7 +41,4 @@ plt.gcf().tight_layout()
 plt.show()
 
 
-#2 Create a Word Cloud of all topics with over 20,000 tweet volume. The size of the word (topic) should be based on their tweet volume
-
-
-
+# 2 Create a Word Cloud of all topics with over 20,000 tweet volume. The size of the word (topic) should be based on their tweet volume
