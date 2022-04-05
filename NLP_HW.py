@@ -1,40 +1,41 @@
-from cgitb import text
+from typing import Text
 from pathlib import Path
 from numpy import imag
 from textblob import Word
 from wordcloud import WordCloud
 import imageio
 import matplotlib.pyplot as plt
+from operator import itemgetter
+from nyc_trends import nyc_trends
+import nltk
+import pandas as pd
 
 
 # 1 Using this information, create a bar chart of the top 10 topics based on their corresponding tweet volume.
 
-mylist = []
-
-from nyc_trends import nyc_trends
-
-
-for i in nyc_trends:
-    hasattr
+trend_list = []
+vol_list = []
 
 
-from operator import itemgetter
+for tweet in nyc_trends[0]["trends"]:
+    if tweet["tweet_volume"]:
+        name = tweet["name"]
+        volume = tweet["tweet_volume"]
+        trend_list.append(name)
+        vol_list.append(volume)
 
-sorted_items = sorted(mylist)
-# print(sorted_items[:10])
+print(trend_list[:10])
+print(vol_list[:10])
 
-sorted_items = sorted(mylist, key=itemgetter(1), reverse=True)
-print(sorted_items[:10])
+tweets = list(zip(trend_list, vol_list))
 
-top20 = sorted_items[:20]
 
-df = pd.DataFrame(top20, columns=["words", "Count"])
+sorted_tweets = sorted(tweets, key=itemgetter(1), reverse=True)
+popular = sorted_tweets[:10]
 
-print(df)
+df = pd.DataFrame(popular, columns=["Tweets", "Volume"])
 
-import matplotlib.pyplot as plt
-
-df.plot.bar(x="words", y="Count", legend=False)
+df.plot.bar(x="Tweets", y="Volume", legend=False)
 
 plt.gcf().tight_layout()
 
